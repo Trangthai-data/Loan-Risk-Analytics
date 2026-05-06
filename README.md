@@ -1,6 +1,6 @@
 # 💳 Loan Cashflow & Credit Risk Analytics
 
-![Dashboard Overview](images/overview-dashboard.png)
+![Dashboard](images/DASHBOARD%20LOAN.png)
 
 Banking analytics project focusing on **loan cashflow analysis**, **credit risk monitoring**, and **lending portfolio optimization** from a banking perspective.
 
