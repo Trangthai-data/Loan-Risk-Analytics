@@ -1,14 +1,16 @@
 -- =========================================================
--- Procedure: SP_LOAN_AMORTIZATION_SCHEDULE
+-- Procedure: SP_CREDIT_PORTFOLIO_REPORTING
+--
 -- Purpose:
--- Generate loan repayment schedules and amortization
--- cashflow projections for lending analytics
+-- Generate lending portfolio reports and
+-- credit segmentation analysis for banking analytics
 --
 -- Features:
--- - Outstanding balance tracking
--- - Principal repayment calculation
--- - Interest accrual calculation
--- - Installment cashflow generation
+-- - Credit portfolio aggregation
+-- - Loan segmentation analysis
+-- - Industry exposure reporting
+-- - Credit product reporting
+-- - Disbursement analysis
 --
 -- Author: Trang Thai
 -- =========================================================
@@ -214,8 +216,7 @@ END;
 
 EXEC PRC_TRANGTH_BAOCAO_TINDUNG_2024 @year = 2024;
 
-
------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------
 
 CREATE VIEW v_BAOCAO_TINDUNG
 AS
@@ -253,7 +254,20 @@ SELECT *
 FROM v_BAOCAO_TINDUNG
 WHERE YEAR(NGAY_GIAINGAN) = 2024;
 
------------------------------------------------------------------------------------------------------------------
+-- =========================================================
+-- Procedure: SP_LOAN_AMORTIZATION_SCHEDULE
+-- Purpose:
+-- Generate loan repayment schedules and amortization
+-- cashflow projections for lending analytics
+--
+-- Features:
+-- - Outstanding balance tracking
+-- - Principal repayment calculation
+-- - Interest accrual calculation
+-- - Installment cashflow generation
+--
+-- Author: Trang Thai
+-- =========================================================
 
 CREATE TABLE KEHOACH
 (
