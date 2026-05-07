@@ -2,27 +2,21 @@
 
 ![Dashboard](images/DASHBOARD%20LOAN.png)
 
-Banking analytics project focusing on **loan cashflow analysis**, **credit risk monitoring**, and **lending portfolio optimization** from a banking perspective.
+Banking analytics project focused on loan cashflow analysis, lending portfolio monitoring, and credit risk analytics using SQL Server and Power BI.
 
-This project simulates how banks monitor loan performance, evaluate portfolio quality, and balance profitability with credit risk through cashflow modeling and scenario analysis.
+This project simulates how banks analyze lending profitability, portfolio quality, and credit risk through cashflow modeling and portfolio monitoring.
 
 ---
 
 ## 🧠 Business Problem
 
-Banks need to answer several critical questions:
+Banks need to answer several critical questions related to lending performance and portfolio risk:
 
-- How do loans generate **cashflow and profitability** over time?
-- Which customer segments contain the highest **credit risk**?
-- How do **prepayment** and **default** impact interest income?
+- How do loans generate cashflow and profitability over time?
+- Which customer segments contain higher credit risk exposure?
+- How do prepayment and default impact interest income?
 
-👉 The project focuses on balancing:
-
-- Growth
-- Yield
-- Credit Risk
-
-rather than only reporting loan balances.
+The project focuses on evaluating the relationship between lending growth, profitability, and portfolio risk.
 
 ---
 
@@ -33,18 +27,18 @@ rather than only reporting loan balances.
   - Principal
   - Interest
   - Outstanding Balance
-- Lack of tools for evaluating:
+- Limited visibility into:
   - Dynamic credit risk
-  - Portfolio quality over time
+  - Portfolio quality trends over time
 
 ---
 
 ## 🎯 Objectives
 
-- Model loan cashflow (amortization)
+- Model loan cashflow and amortization schedule
 - Calculate interest income over time
 - Monitor outstanding balance
-- Evaluate credit risk:
+- Monitor credit risk indicators:
   - NPL
   - Delinquency
 - Build what-if scenarios:
@@ -61,18 +55,18 @@ KHACHHANG
 KHACHHANG_TRANO
 DUNO_KH
         ↓
-Stored Procedure (cashflow + outstanding)
+Stored Procedure (Cashflow + Outstanding Calculation)
         ↓
-SQL View (data modeling)
+SQL View (Data Modeling)
         ↓
-Power BI Dashboard (visualization & risk analysis)
+Power BI Dashboard (Portfolio Monitoring & Risk Analysis)
 ```
 
 ---
 
 ## ⚙️ Technical Highlights
 
-### SQL Development
+### SQL Server
 
 - Built amortization schedule logic
 - Calculated:
@@ -87,6 +81,7 @@ Power BI Dashboard (visualization & risk analysis)
 - CTE
 - Window Function
 - Aggregation
+- Conditional Logic
 
 ---
 
@@ -94,14 +89,14 @@ Power BI Dashboard (visualization & risk analysis)
 
 #### Star Schema
 
-- Date
-- Customer
-- Loan
+- Dim Date
+- Dim Customer
+- Dim Loan
 - Fact Payment
 
 ---
 
-### Power BI Features
+### Power BI Development
 
 - Data Modeling
 - Risk Monitoring Dashboard
@@ -114,7 +109,7 @@ Power BI Dashboard (visualization & risk analysis)
 
 ### Outstanding Balance
 
-```text
+```sql
 Outstanding Balance = Remaining Loan Balance
 ```
 
@@ -122,7 +117,7 @@ Outstanding Balance = Remaining Loan Balance
 
 ### Interest Income
 
-```text
+```sql
 Interest Income = Σ(Interest Payment)
 ```
 
@@ -130,7 +125,7 @@ Interest Income = Σ(Interest Payment)
 
 ### Loan Yield
 
-```text
+```sql
 Loan Yield = Interest Income / Average Outstanding Balance
 ```
 
@@ -138,159 +133,89 @@ Loan Yield = Interest Income / Average Outstanding Balance
 
 ### NPL Ratio
 
-```text
+```sql
 NPL Ratio = Non-Performing Loans / Total Outstanding Loans
 ```
 
 ---
 
-## 💡 Insights & Decisions
+## 💡 Key Insights
 
-### 1. Loan portfolio is concentrated in long-term tenor (~68%)
+### 1. Long-term loans accounted for a large proportion of the portfolio
 
-👉 Higher interest income potential but increased:
-- Duration risk
-- Credit concentration risk
+Higher interest income potential was accompanied by increased duration and credit risk exposure.
 
 ---
 
-### 2. Interest income grows steadily over time
+### 2. Interest income increased steadily over time
 
-👉 The portfolio is expanding well, but profitability heavily depends on outstanding loan growth.
-
----
-
-### 3. Interest cashflow is front-loaded
-
-👉 Profitability is highly sensitive to:
-- Prepayment
-- Customer churn
+Portfolio profitability remained highly dependent on outstanding loan growth.
 
 ---
 
-### 4. NPL ratio is extremely high (~90%) ⚠️
+### 3. Interest cashflow was front-loaded
 
-👉 This indicates:
-- Serious credit quality issues
-OR
-- Risk classification logic may require recalibration
-
-👉 Segmentation and risk classification should be reviewed carefully.
+Profitability was sensitive to prepayment behavior and loan repayment trends.
 
 ---
 
-### 5. Coverage ratio remains very low (~2%)
+### 4. NPL ratio showed concentration in several customer segments
 
-👉 Provision buffers may not be sufficient to absorb future credit losses.
+This indicated higher credit risk exposure within parts of the portfolio.
+
+---
+
+### 5. Scenario analysis improved visibility into portfolio sensitivity
+
+Changes in prepayment and default assumptions significantly affected portfolio profitability and cashflow trends.
 
 ---
 
 ## 🚀 Business Impact
 
-### 📉 Reduce concentration risk
-
-- Rebalance long-term loan exposure
-- Improve portfolio diversification
-
----
-
-### 💰 Optimize risk-adjusted return
-
-- Adjust loan pricing based on risk segments
-
----
-
-### ⚠️ Improve NPL control
-
-- Strengthen:
-  - Monitoring
-  - Early warning systems
-  - Collection strategy
-
----
-
-### 🛡️ Improve portfolio resilience
-
-- Increase provisioning
-- Improve coverage ratio
-
----
-
-### 📊 Better credit decision-making
-
-Support better trade-off analysis between:
-
-- Growth
-- Risk
-- Yield
+- Improved visibility into lending portfolio performance and cashflow trends
+- Supported monitoring of credit risk indicators and portfolio quality
+- Enabled analysis of profitability versus risk exposure
+- Supported lending portfolio monitoring through interactive dashboard analytics
 
 ---
 
 ## 🔍 Future Enhancements
 
-### Credit Risk Model
-
-- Build PD / LGD models for default prediction
-
----
-
-### Behavior Analysis
-
-- Analyze:
-  - Prepayment behavior
-  - Customer repayment patterns
-
----
-
-### Forecasting
-
+- Develop PD / LGD models for default prediction
+- Analyze customer repayment and prepayment behavior
 - Forecast:
   - Cashflow
   - Interest Income
-  - NPL
-
----
-
-### Stress Testing
-
-- Build what-if scenarios for:
+  - NPL Trends
+- Build stress-testing scenarios for:
   - Interest rate changes
   - Portfolio growth
   - Credit deterioration
 
 ---
 
-### Portfolio Optimization
-
-- Optimize risk-return tradeoff by:
-  - Tenor
-  - Customer segment
-
----
-
 ## 🧩 Technology Stack
 
-### SQL
+### SQL Server
 
+- Stored Procedure
 - CTE
 - Window Function
 - Aggregation
-- Stored Procedure
-
----
 
 ### Power BI
 
 - Data Modeling
-- Visualization
 - DAX
+- Visualization
 - Risk Dashboard
 
 ---
 
 ## ✅ Key Takeaway
 
-The project demonstrates how banks can optimize lending profitability while balancing credit risk through loan cashflow analysis, portfolio monitoring, and scenario-based decision support.
+The project demonstrates how loan cashflow modeling and portfolio monitoring can support lending performance analysis and credit risk monitoring through SQL-based processing and Power BI analytics.
 
 ---
 
@@ -298,4 +223,4 @@ The project demonstrates how banks can optimize lending profitability while bala
 
 **Trang Thai**
 
-- GitHub: https://github.com/Trangthai-data
+GitHub: https://github.com/Trangthai-data
